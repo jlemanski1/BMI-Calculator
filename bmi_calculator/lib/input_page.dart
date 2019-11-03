@@ -18,19 +18,29 @@ class _InputPageState extends State<InputPage> {
         children: <Widget>[
           Expanded(child: Row(
             children: <Widget>[
-              Expanded(child: MainPageCard(),
+              Expanded(child: MainPageCard(
+                colour: Color(0xFF1D1E33),
+                ),
               ),
-              Expanded(child: MainPageCard(),
+              Expanded(child: MainPageCard(
+                colour: Color(0xFF1D1E33),
+                ),
               ),
             ],
           )),
-          Expanded(child: MainPageCard(),
+          Expanded(child: MainPageCard(
+                colour: Color(0xFF1D1E33),
+                ),
           ),
           Expanded(child: Row(
             children: <Widget>[
-              Expanded(child: MainPageCard(),
+              Expanded(child: MainPageCard(
+                colour: Color(0xFF1D1E33),
+                ),
               ),
-              Expanded(child: MainPageCard(),
+              Expanded(child: MainPageCard(
+                colour: Color(0xFF1D1E33),
+                ),
               ),
             ],),
           ),
@@ -42,9 +52,9 @@ class _InputPageState extends State<InputPage> {
 
 
 class MainPageCard extends StatelessWidget {
-  const MainPageCard({
-    Key key,
-  }) : super(key: key);
+  Color colour;
+
+  MainPageCard({@required this.colour});  //Require Colour param
 
   @override
   Widget build(BuildContext context) {
