@@ -52,7 +52,7 @@ class _InputPageState extends State<InputPage> {
 
 
 class MainPageCard extends StatelessWidget {
-  Color colour;
+  final Color colour;
 
   MainPageCard({@required this.colour});  //Require Colour param
 
@@ -61,7 +61,7 @@ class MainPageCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(15.0),
       decoration: BoxDecoration(
-        color: Color(0xFF1D1E33),
+        color: colour,
         borderRadius: BorderRadius.circular(10.0),
         ),
       );
