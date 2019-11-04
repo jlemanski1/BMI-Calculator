@@ -66,12 +66,14 @@ class _InputPageState extends State<InputPage> {
 
 class MainPageCard extends StatelessWidget {
   final Color colour;
+  final Widget cardChild;
 
-  MainPageCard({@required this.colour});  //Require Colour param
+  MainPageCard({@required this.colour, this.cardChild});  //Require Colour param
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      child: cardChild,
       margin: EdgeInsets.all(15.0),
       decoration: BoxDecoration(
         color: colour,
