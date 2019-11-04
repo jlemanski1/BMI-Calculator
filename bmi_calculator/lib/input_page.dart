@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // Active (MainPage) Card
 const activeCardColour = Color(0xFF1D1E33);
@@ -27,10 +28,20 @@ class _InputPageState extends State<InputPage> {
             children: <Widget>[
               Expanded(child: MainPageCard(
                 colour: activeCardColour,
+                cardChild: GenderCard(
+                  cardIconData: FontAwesomeIcons.mars,
+                  iconSize: 80.0,
+                  cardText: 'MALE',
+                ),
                 ),
               ),
               Expanded(child: MainPageCard(
                 colour: activeCardColour,
+                cardChild: GenderCard(
+                  cardIconData: FontAwesomeIcons.female,
+                  iconSize: 80.0,
+                  cardText: 'FEMALE',
+                ),
                 ),
               ),
             ],
@@ -59,6 +70,33 @@ class _InputPageState extends State<InputPage> {
           ),
         ],
       )
+    );
+  }
+}
+
+class GenderCard extends StatelessWidget {
+  final IconData cardIconData;
+  final double iconSize;
+  final String cardText;
+
+  GenderCard({@required this.cardIconData, this.iconSize, this.cardText});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Icon(
+          cardIconData,
+          size: iconSize,
+        ),
+        SizedBox(
+          height: 15.0,
+        ),
+        Text(cardText, style: TextStyle(
+          fontSize: 18.0, color: Color(0xFF8D8E98)
+        ))
+      ],
     );
   }
 }
