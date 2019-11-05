@@ -28,24 +28,7 @@ class _InputPageState extends State<InputPage> {
   Color maleCardColour = inActiveCardColour;
   Color femaleCardColour = inActiveCardColour;
 
-  // 0: female, 1: male
-  void updateColour(Gender gender) {
-    if (gender == Gender.male) {
-      if (maleCardColour == inActiveCardColour) {
-        maleCardColour = activeCardColour;
-        femaleCardColour = inActiveCardColour;
-      } else {
-        maleCardColour = inActiveCardColour;
-      }
-    } else if (gender == Gender.female) {
-      if (femaleCardColour == inActiveCardColour) {
-        femaleCardColour = activeCardColour;
-        maleCardColour = inActiveCardColour;
-      } else {
-        femaleCardColour = inActiveCardColour;
-      }
-    }
-  }
+  Gender selectedGender;
 
   @override
   Widget build(BuildContext context) {
@@ -61,11 +44,11 @@ class _InputPageState extends State<InputPage> {
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
-                      updateColour(Gender.male);
+                      selectedGender = Gender.male;
                     });
                   },
                   child: CustomCard(
-                    colour: maleCardColour,
+                    colour: selectedGender == Gender.male ? activeCardColour : inActiveCardColour,
                     child: IconContent(
                       cardIconData: FontAwesomeIcons.mars,
                       iconSize: 80.0,
@@ -77,13 +60,13 @@ class _InputPageState extends State<InputPage> {
               Expanded(child: GestureDetector(
                 onTap: () {
                   setState(() {
-                    updateColour(Gender.female);
+                    selectedGender = Gender.female;
                   });
                 },
                 child: CustomCard(
-                  colour: femaleCardColour,
+                  colour: selectedGender == Gender.female ? activeCardColour : inActiveCardColour,
                   child: IconContent(
-                    cardIconData: FontAwesomeIcons.female,
+                    cardIconData: FontAwesomeIcons.venus,
                     iconSize: 80.0,
                     cardText: 'FEMALE',
                   ),
