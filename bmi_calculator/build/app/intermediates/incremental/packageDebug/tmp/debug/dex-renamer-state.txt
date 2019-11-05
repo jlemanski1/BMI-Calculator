@@ -1,4 +1,4 @@
-#Mon Nov 04 16:09:42 MST 2019
+#Mon Nov 04 17:30:55 MST 2019
 base.0=/home/jonathan/Development/BMI-Calculator/bmi_calculator/build/app/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex
