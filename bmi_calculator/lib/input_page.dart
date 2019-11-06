@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'constants.dart';
+
 //Import custom widgets
 import 'custom_card.dart';
 import 'icon_content.dart';
 
-// Active (MainPage) Card
-const activeCardColour = Color(0xFF1D1E33);
-const inActiveCardColour = Color(0xFF111328);
-
-// Bottom Container
-const bottomContainerHeight = 80.0;
-const bottomContainerColour = Color(0xFFEB1555); 
 
 enum Gender {
   female,
