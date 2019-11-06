@@ -41,40 +41,36 @@ class _InputPageState extends State<InputPage> {
           Expanded(child: Row(
             children: <Widget>[
               Expanded(
-                child: GestureDetector(
-                  onTap: () {
+                child: CustomCard(
+                  onPress: (){
                     setState(() {
                       selectedGender = Gender.male;
                     });
                   },
-                  child: CustomCard(
-                    colour: selectedGender == Gender.male ? activeCardColour : inActiveCardColour,
-                    child: IconContent(
-                      cardIconData: FontAwesomeIcons.mars,
-                      iconSize: 80.0,
-                      cardText: 'MALE',
-                    ),
+                  colour: selectedGender == Gender.male ? activeCardColour : inActiveCardColour,
+                  child: IconContent(
+                    cardIconData: FontAwesomeIcons.mars,
+                    iconSize: 80.0,
+                    cardText: 'MALE',
                   ),
                 ),
               ),
-              Expanded(child: GestureDetector(
-                onTap: () {
+              Expanded(child: CustomCard(
+                onPress: (){
                   setState(() {
                     selectedGender = Gender.female;
                   });
                 },
-                child: CustomCard(
-                  colour: selectedGender == Gender.female ? activeCardColour : inActiveCardColour,
-                  child: IconContent(
-                    cardIconData: FontAwesomeIcons.venus,
-                    iconSize: 80.0,
-                    cardText: 'FEMALE',
+                colour: selectedGender == Gender.female ? activeCardColour : inActiveCardColour,
+                child: IconContent(
+                  cardIconData: FontAwesomeIcons.venus,
+                  iconSize: 80.0,
+                  cardText: 'FEMALE',
                   ),
-                  ),
+                ),
               ),
-              ),
-            ],
-          )),
+            ],),
+          ),
           Expanded(child: CustomCard(
                 colour: activeCardColour,
                 ),
