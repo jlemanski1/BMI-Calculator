@@ -26,7 +26,7 @@ class IconContent extends StatelessWidget {
         SizedBox(
           height: 15.0,
         ),
-        Text(cardText, style: labelTextStyle)
+        Text(cardText, style: kLabelTextStyle)
       ],
     );
   }

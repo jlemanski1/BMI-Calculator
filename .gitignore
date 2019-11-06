@@ -64,8 +64,8 @@
 ./bmi_calculator/**/ios/Flutter/flutter_export_environment.sh
 ./bmi_calculator/**/ios/ServiceDefinitions.json
 ./bmi_calculator/**/ios/Runner/GeneratedPluginRegistrant.*
-./bmi_calculator/
-./bmi_calculator/# Exceptions to above rules.
+
+# Exceptions to above rules.
 ./bmi_calculator/!**/ios/**/default.mode1v3
 ./bmi_calculator/!**/ios/**/default.mode2v3
 ./bmi_calculator/!**/ios/**/default.pbxuser

@@ -20,10 +20,8 @@ class InputPage extends StatefulWidget {
 
 
 class _InputPageState extends State<InputPage> {
-  Color maleCardColour = inActiveCardColour;
-  Color femaleCardColour = inActiveCardColour;
-
   Gender selectedGender;
+  int height = 180;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +40,7 @@ class _InputPageState extends State<InputPage> {
                       selectedGender = Gender.male;
                     });
                   },
-                  colour: selectedGender == Gender.male ? activeCardColour : inActiveCardColour,
+                  colour: selectedGender == Gender.male ? kActiveCardColour : kInActiveCardColour,
                   child: IconContent(
                     cardIconData: FontAwesomeIcons.mars,
                     iconSize: 80.0,
@@ -56,7 +54,7 @@ class _InputPageState extends State<InputPage> {
                     selectedGender = Gender.female;
                   });
                 },
-                colour: selectedGender == Gender.female ? activeCardColour : inActiveCardColour,
+                colour: selectedGender == Gender.female ? kActiveCardColour : kInActiveCardColour,
                 child: IconContent(
                   cardIconData: FontAwesomeIcons.venus,
                   iconSize: 80.0,
@@ -67,26 +65,62 @@ class _InputPageState extends State<InputPage> {
             ],),
           ),
           Expanded(child: CustomCard(
-                colour: activeCardColour,
+            colour: kActiveCardColour,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                
+                Text(
+                  'HEIGHT',
+                  style: kLabelTextStyle
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  textBaseline: TextBaseline.alphabetic,
+                  children: <Widget>[
+                    Text(
+                      height.toString(),
+                      style: kNumberTextStyle,
+                    ),
+                    Text(
+                      'cm',
+                      style: kLabelTextStyle,
+                    ),
+                  ],
+                ),
+                Slider(
+                  value: height.toDouble(),
+                  activeColor: Color(0xFFEB1555),
+                  min: 120.0,
+                  max: 220.0,
+                  onChanged: (double newValue) {
+                    setState(() {
+                      height = newValue.round();
+                    });
+                  },
+                ),
+              ],
+              ),
+            ),
           ),
           Expanded(child: Row(
             children: <Widget>[
               Expanded(child: CustomCard(
-                colour: activeCardColour,
+                colour: kActiveCardColour,
                 ),
               ),
               Expanded(child: CustomCard(
-                colour: activeCardColour,
+                colour: kActiveCardColour,
                 ),
               ),
             ],),
           ),
           Container(
-            color: bottomContainerColour,
+            color: kBottomContainerColour,
             margin: EdgeInsets.only(top: 10.0),
             width: double.infinity,
-            height: bottomContainerHeight,
+            height: kBottomContainerHeight,
           ),
         ],
       )

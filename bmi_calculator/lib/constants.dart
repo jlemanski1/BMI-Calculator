@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 
 // Text style for label text on icon_content widgets
-const labelTextStyle = TextStyle(
+const kLabelTextStyle = TextStyle(
   fontSize: 18.0, color: Color(0xFF8D8E98)
 );
 
 
+const kNumberTextStyle = TextStyle(
+  fontSize: 50.0, fontWeight: FontWeight.w900
+);
+
 // Active (MainPage) Card
-const activeCardColour = Color(0xFF1D1E33);
-const inActiveCardColour = Color(0xFF111328);
+const kActiveCardColour = Color(0xFF1D1E33);
+const kInActiveCardColour = Color(0xFF111328);
 
 // Bottom Container
-const bottomContainerHeight = 80.0;
-const bottomContainerColour = Color(0xFFEB1555); 
+const kBottomContainerHeight = 80.0;
+const kBottomContainerColour = Color(0xFFEB1555); 
