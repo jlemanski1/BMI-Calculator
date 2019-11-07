@@ -24,6 +24,7 @@ class _InputPageState extends State<InputPage> {
   Gender selectedGender;
   int height = 180;
   int weight = 60;
+  int age = 18;
 
   @override
   Widget build(BuildContext context) {
@@ -148,7 +149,8 @@ class _InputPageState extends State<InputPage> {
                           icon: FontAwesomeIcons.minus,
                           onPressed: (){
                             setState(() {
-                              weight--;
+                              if (weight > 40)
+                                weight--;
                             });
                           },
                         ),
@@ -159,7 +161,8 @@ class _InputPageState extends State<InputPage> {
                           icon: FontAwesomeIcons.plus,
                           onPressed: (){
                             setState(() {
-                              weight++;
+                              if (weight < 227)
+                                weight++;
                             });
                           },
                         ),
@@ -171,6 +174,45 @@ class _InputPageState extends State<InputPage> {
               ),
               Expanded(child: CustomCard(
                 colour: kActiveCardColour,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      'AGE',
+                      style: kLabelTextStyle,
+                    ),
+                    Text(
+                      age.toString(),
+                      style: kNumberTextStyle,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        RoundIconButton(
+                          icon: FontAwesomeIcons.minus,
+                          onPressed: (){
+                            setState(() {
+                              if (age > 0)
+                                age--;
+                            });
+                          },
+                        ),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        RoundIconButton(
+                          icon: FontAwesomeIcons.plus,
+                          onPressed: (){
+                            setState(() {
+                              if (age < 90)
+                                age++;
+                            });
+                          },
+                        ),
+                      ],
+                    )
+                  ],
+                ),
                 ),
               ),
             ],),
