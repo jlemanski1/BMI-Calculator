@@ -9,7 +9,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/jlemanski1/BMI-Calculator">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/bmi_01.png" alt="Screenshot 1" width="80" height="80">
   </a>
 
   <h3 align="center">Simple BMI Calculator</h3>
@@ -47,7 +47,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](#)
+[![Simple BMI Calculator][app-screenshot1]](#)
 
 There are many great BMI calculators available on the appstore, however, I didn't find one that really suit my needs so I created this super simple one. I want to create a BMI calculator so quick and easy to use that you never get lazy about checking.
 
@@ -146,3 +146,6 @@ Project Link: [https://github.com/jlemanski1/BMI-Calculator/](https://github.com
 [forks-url]: https://github.com/jlemanski1/BMI-Calculator/network/members
 [cSize-shield]: https://img.shields.io/github/languages/code-size/jlemanski1/BMI-Calculator
 [cSize-url]: https://github.com/jlemanski1/BMI-Calculator
+[app-screenshot1]: images/bmi_01.png
+[app-screenshot2]: images/bmi_02.png
+[app-screenshot3]: images/bmi_03.png
