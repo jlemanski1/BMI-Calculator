@@ -7,7 +7,7 @@
 
 <!-- PROJECT LOGO -->
 <br />
-  <h3 align="center">Simple BMI Calculator</h3>
+  <h3 align="center">ezBMI</h3>
 
   <p align="center">
     A super simple & sleek BMI calculator to keep track of your health!
@@ -42,15 +42,15 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Simple BMI Calculator][app-screenshot1]](#)
+[![ezBMI][app-screenshot1]](#)
 
-There are many great BMI calculators available on the appstore, however, I didn't find one that really suit my needs so I created this super simple one based off a neat design I found on dribbble. I want to create a BMI calculator so quick and easy to use that you never get lazy about checking.
+There are many great BMI calculators available on the appstore, however, I couldn't find one that really suited my needs so I created this super simple one based off a neat design I found on dribbble. I want to create a BMI calculator so quick and easy to use that you never get lazy about checking.
 
 Here's why:
 * Your fitness apps shouldn't get in the way of your active lifestyle
 * You shouldn't be doing simple tasks using bloated slow apps
 
-Of course, I also wanted to implement the sleek design I found on dribbble by [Ruben Vaalt](https://dribbble.com/shots/4585382-Simple-BMI-Calculator)
+Of course, I also wanted to try to implement a concept design through the use of custom Widgets. Mainly as a good learning exercise, but also to be able to build a collection of custom Widgets that I can reuse and further customize for future apps. Aaaaaand, of course, the sleek design I found on dribbble is Simple Bmi Calculator by [Ruben Vaalt](https://dribbble.com/shots/4585382-Simple-BMI-Calculator)
 
 A list of commonly used resources that I find helpful are listed in the acknowledgements.
 
@@ -129,8 +129,8 @@ Project Link: [https://github.com/jlemanski1/BMI-Calculator/](https://github.com
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-* [Ruben Vaalt](https://dribbble.com/shots/4585382-Simple-BMI-Calculator)
-* [Flutter Docs](https://flutter.dev/docs)
+* [Ruben Vaalt](https://dribbble.com/shots/4585382-Simple-BMI-Calculator) for the design
+* [Flutter Docs](https://flutter.dev/docs) for help with all things Flutter
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [license-shield]: https://img.shields.io/github/license/jlemanski1/BMI-Calculator

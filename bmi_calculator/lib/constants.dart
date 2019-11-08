@@ -10,6 +10,12 @@ const kNumberTextStyle = TextStyle(
   fontSize: 50.0, fontWeight: FontWeight.w900
 );
 
+
+const kLargeButtonTextStyle = TextStyle(
+  fontSize: 25.0,
+  fontWeight: FontWeight.bold,
+);
+
 // Active (MainPage) Card
 const kActiveCardColour = Color(0xFF1D1E33);
 const kInActiveCardColour = Color(0xFF111328);
@@ -17,3 +23,5 @@ const kInActiveCardColour = Color(0xFF111328);
 // Bottom Container
 const kBottomContainerHeight = 80.0;
 const kBottomContainerColour = Color(0xFFEB1555); 
+
+
