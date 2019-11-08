@@ -44,7 +44,7 @@
 
 [![Simple BMI Calculator][app-screenshot1]](#)
 
-There are many great BMI calculators available on the appstore, however, I didn't find one that really suit my needs so I created this super simple one. I want to create a BMI calculator so quick and easy to use that you never get lazy about checking.
+There are many great BMI calculators available on the appstore, however, I didn't find one that really suit my needs so I created this super simple one based off a neat design I found on dribbble. I want to create a BMI calculator so quick and easy to use that you never get lazy about checking.
 
 Here's why:
 * Your fitness apps shouldn't get in the way of your active lifestyle
