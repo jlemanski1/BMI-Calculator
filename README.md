@@ -7,11 +7,6 @@
 
 <!-- PROJECT LOGO -->
 <br />
-<p align="center">
-  <a href="https://github.com/jlemanski1/BMI-Calculator">
-    <img src="images/bmi_01.png" alt="Screenshot 1" width="80" height="80">
-  </a>
-
   <h3 align="center">Simple BMI Calculator</h3>
 
   <p align="center">
