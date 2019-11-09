@@ -130,7 +130,9 @@ Project Link: [https://github.com/jlemanski1/BMI-Calculator/](https://github.com
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 * [Ruben Vaalt](https://dribbble.com/shots/4585382-Simple-BMI-Calculator) for the design
+* App icon made by [Nikita Golubev](https://www.flaticon.com/authors/nikita-golubev) from [www.flaticon.com](www.flaticon.com)
 * [Flutter Docs](https://flutter.dev/docs) for help with all things Flutter
+
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [license-shield]: https://img.shields.io/github/license/jlemanski1/BMI-Calculator
