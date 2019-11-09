@@ -5,7 +5,7 @@ class CustomCard extends StatelessWidget {
   final Widget child;
   final Function onPress; // Function to call when pressed
 
-  CustomCard({@required this.colour, this.child, this.onPress});
+  CustomCard({@required this.colour, @required this.child, this.onPress});
 
   @override
   Widget build(BuildContext context) {

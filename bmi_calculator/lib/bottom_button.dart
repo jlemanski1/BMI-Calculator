@@ -6,7 +6,7 @@ class BottomButton extends StatelessWidget {
   final Function onTap;
   final String buttonTitle;
 
-  BottomButton({@required this.onTap, this.buttonTitle});
+  BottomButton({@required this.onTap, @required this.buttonTitle});
 
 
   @override

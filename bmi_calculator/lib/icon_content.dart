@@ -12,7 +12,7 @@ class IconContent extends StatelessWidget {
   final double iconSize;
   final String cardText;
 
-  IconContent({@required this.cardIconData, this.iconSize, this.cardText});
+  IconContent({@required this.cardIconData, @required this.iconSize, @required this.cardText});
 
   @override
   Widget build(BuildContext context) {
