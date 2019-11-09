@@ -97,7 +97,7 @@ flutter install
 ## Roadmap
 
 See the [open issues](https://github.com/jlemanski1/BMI-Calculator/issues) for a list of proposed features (and known issues).
-
+You can also check out the [project board](https://github.com/jlemanski1/BMI-Calculator/projects/1)
 
 <!-- CONTRIBUTING -->
 ## Contributing
