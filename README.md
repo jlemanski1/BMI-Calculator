@@ -81,9 +81,10 @@ git clone https://github.com/jlemanski1/BMI-Calculator.git
 ```
 2. Run flutter doctor to ensure everything is setup correctly
 ```sh
+cd bmi_calculator
 flutter doctor
 ```
-3. Build APK (cd into app directory)
+3. Build APK
 ```sh
 flutter build apk --split-per-abi --release
 ```
