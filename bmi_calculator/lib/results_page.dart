@@ -45,7 +45,7 @@ class ResultsPage extends StatelessWidget {
                   Text(
                     resultText.toUpperCase(),
                     style: TextStyle(
-                      color: Color(0xFF24D876),
+                      color: resultColour,
                       fontSize: 22.0,
                       fontWeight: FontWeight.bold,
                     )

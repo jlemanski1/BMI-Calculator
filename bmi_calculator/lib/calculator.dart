@@ -49,9 +49,19 @@ class Calculator {
     }
   }
 
-  // Returnsta colour for the result text based on the calculated bmi
+  // Returns a colour for the result text based on the calculated bmi
   Color getResultColour() {
-
-    return null;
+    if (_bmi >= 40) {
+      return Color(0xFFDD2C00); // Extremely Obese (Red)
+    } else if (_bmi >= 30) {
+      return Color(0xFFE65100); // Obese (Deep Orange)
+    } else if (_bmi >= 25) {
+      return Color(0xFFEF6C00); // Overweight (Orange)
+    } else if (_bmi >= 18.5) {
+      return Color(0xFF24D876); // Healthy(Green)
+    } else {
+      return Color(0xFFFFA726);     // Underweight (Yellowy)
+    }
   }
+  
 }
