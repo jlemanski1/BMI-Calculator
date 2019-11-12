@@ -14,9 +14,9 @@ import 'bottom_button.dart';
 
 
 
-enum Gender {
-  female,
-  male,
+enum Measurement {
+  imperial,
+  metric,
 }
 
 class InputPage extends StatefulWidget {
@@ -26,7 +26,7 @@ class InputPage extends StatefulWidget {
 
 
 class _InputPageState extends State<InputPage> {
-  Gender selectedGender;
+  Measurement selectedMeasure;
   int height = 180;
   int weight = 60;
   int age = 18;
@@ -35,7 +35,8 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMI Calculator'),
+        centerTitle: true,
+        title: Text('ezBMI'),
       ),
       body: Column(
         children: <Widget>[
@@ -45,28 +46,28 @@ class _InputPageState extends State<InputPage> {
                 child: CustomCard(
                   onPress: (){
                     setState(() {
-                      selectedGender = Gender.male;
+                      selectedMeasure = Measurement.metric;
                     });
                   },
-                  colour: selectedGender == Gender.male ? kActiveCardColour : kInActiveCardColour,
+                  colour: selectedMeasure == Measurement.metric ? kActiveCardColour : kInActiveCardColour,
                   child: IconContent(
-                    cardIconData: FontAwesomeIcons.mars,
+                    cardIconData: FontAwesomeIcons.pencilRuler,
                     iconSize: 80.0,
-                    cardText: 'MALE',
+                    cardText: 'METRIC',
                   ),
                 ),
               ),
               Expanded(child: CustomCard(
                 onPress: (){
                   setState(() {
-                    selectedGender = Gender.female;
+                    selectedMeasure = Measurement.imperial;
                   });
                 },
-                colour: selectedGender == Gender.female ? kActiveCardColour : kInActiveCardColour,
+                colour: selectedMeasure == Measurement.imperial ? kActiveCardColour : kInActiveCardColour,
                 child: IconContent(
-                  cardIconData: FontAwesomeIcons.venus,
+                  cardIconData: FontAwesomeIcons.rulerCombined,
                   iconSize: 80.0,
-                  cardText: 'FEMALE',
+                  cardText: 'IMPERIAL',
                   ),
                 ),
               ),
