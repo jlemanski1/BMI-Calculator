@@ -1,19 +1,26 @@
 import 'dart:math';
-
 import 'package:flutter/widgets.dart';
+import 'measure.dart';
 
 // Responsible for calculating the BMI of a user inputted height and weight
 class Calculator {
   final int height;
   final int weight;
+  final Measurement measure;
   
   double _bmi;
 
-  Calculator({this.height, this.weight});
+  Calculator({this.height, this.weight, this.measure});
 
   // Calculate BMI and return as string with 1 decimal point
   String calculateBMI() {
-    _bmi = weight / pow(height / 100, 2);
+
+    //TODO: Account for imperial measurements
+    if (measure == Measurement.imperial) {
+
+    } else if (measure == Measurement.metric) {
+      _bmi = weight / pow(height / 100, 2);
+    }
     return _bmi.toStringAsFixed(1);
   }
 

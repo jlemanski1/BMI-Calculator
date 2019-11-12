@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'constants.dart';
 import 'results_page.dart';
 import 'calculator.dart';
+import 'measure.dart';
 
 //Import custom widgets
 import 'custom_card.dart';
@@ -12,12 +13,6 @@ import 'icon_content.dart';
 import 'round_icon_button.dart';
 import 'bottom_button.dart';
 
-
-
-enum Measurement {
-  imperial,
-  metric,
-}
 
 class InputPage extends StatefulWidget {
   @override
@@ -198,7 +193,7 @@ class _InputPageState extends State<InputPage> {
                           icon: FontAwesomeIcons.minus,
                           onPressed: (){
                             setState(() {
-                              if (age > 0)
+                              if (age > 17)
                                 age--;
                             });
                           },
@@ -226,7 +221,7 @@ class _InputPageState extends State<InputPage> {
           BottomButton(
             buttonTitle: 'CALCULATE',
             onTap: (){
-              Calculator calc = Calculator(height: height, weight: weight);
+              Calculator calc = Calculator(height: height, weight: weight, measure: selectedMeasure);
               
               Navigator.push(context,
               MaterialPageRoute(
