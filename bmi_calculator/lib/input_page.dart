@@ -92,7 +92,7 @@ class _InputPageState extends State<InputPage> {
                       style: kNumberTextStyle,
                     ),
                     Text(
-                      'cm',
+                      selectedMeasure == Measurement.metric ? 'cm' : 'ft/in',
                       style: kLabelTextStyle,
                     ),
                   ],
@@ -143,7 +143,7 @@ class _InputPageState extends State<InputPage> {
                           style: kNumberTextStyle,
                         ),
                         Text(
-                          'kg',
+                          selectedMeasure == Measurement.metric ? 'kg' : 'lbs',
                           style: kLabelTextStyle,
                         ),
                       ],
@@ -167,7 +167,7 @@ class _InputPageState extends State<InputPage> {
                           icon: FontAwesomeIcons.plus,
                           onPressed: (){
                             setState(() {
-                              if (weight < 227)
+                              if (weight < 300)
                                 weight++;
                             });
                           },
