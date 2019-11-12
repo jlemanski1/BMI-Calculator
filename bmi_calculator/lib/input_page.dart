@@ -22,9 +22,14 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Measurement selectedMeasure;
+  int age = 18;
   int height = 180;
   int weight = 60;
-  int age = 18;
+  int displayFt = 5;
+  int displayIn = 8;
+  int heightIn; // actual height in inches
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -83,11 +88,11 @@ class _InputPageState extends State<InputPage> {
                   textBaseline: TextBaseline.alphabetic,
                   children: <Widget>[
                     Text(
-                      height.toString(),
+                      selectedMeasure == Measurement.metric ? height.toString() : '${displayFt.toString()},${displayIn.toString()}',
                       style: kNumberTextStyle,
                     ),
                     Text(
-                      selectedMeasure == Measurement.metric ? 'cm' : 'ft/in',
+                      selectedMeasure == Measurement.metric ? 'cm' : 'ft,in',
                       style: kLabelTextStyle,
                     ),
                   ],
@@ -102,13 +107,22 @@ class _InputPageState extends State<InputPage> {
                     overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
                   ),
                   child: Slider(
-                    value: height.toDouble(),
+                    value: selectedMeasure == Measurement.metric ? height.toDouble() : heightIn.toDouble(),
                     min: 120.0,
                     max: 220.0,
                     onChanged: (double newValue) {
-                      setState(() {
-                        height = newValue.round();
-                      });
+                      if (selectedMeasure == Measurement.metric) {
+                        setState(() {
+                          height = newValue.round();
+                        });
+                      } else if (selectedMeasure == Measurement.imperial) {
+                        // Check if newInches is within acceptable range (prevent runtime error)
+                        setState(() {
+                          heightIn = newValue.toInt();
+                          displayFt = heightIn ~/12;
+                          displayIn = (heightIn % 12).toInt();
+                        });
+                      }
                     },
                   ),
                 ),
