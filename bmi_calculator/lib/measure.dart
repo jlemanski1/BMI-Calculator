@@ -1,0 +1,4 @@
+enum Measurement {
+  imperial,
+  metric,
+}

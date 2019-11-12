@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'constants.dart';
 import 'results_page.dart';
 import 'calculator.dart';
+import 'measure.dart';
 
 //Import custom widgets
 import 'custom_card.dart';
@@ -13,12 +14,6 @@ import 'round_icon_button.dart';
 import 'bottom_button.dart';
 
 
-
-enum Gender {
-  female,
-  male,
-}
-
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
@@ -26,16 +21,23 @@ class InputPage extends StatefulWidget {
 
 
 class _InputPageState extends State<InputPage> {
-  Gender selectedGender;
+  Measurement selectedMeasure;
+  int age = 18;
   int height = 180;
   int weight = 60;
-  int age = 18;
+  int displayFt = 5;
+  int displayIn = 8;
+  int weightLbs = 150;
+  int heightIn = 84; // actual height in inches
+
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMI Calculator'),
+        centerTitle: true,
+        title: Text('ezBMI'),
       ),
       body: Column(
         children: <Widget>[
@@ -45,28 +47,28 @@ class _InputPageState extends State<InputPage> {
                 child: CustomCard(
                   onPress: (){
                     setState(() {
-                      selectedGender = Gender.male;
+                      selectedMeasure = Measurement.metric;
                     });
                   },
-                  colour: selectedGender == Gender.male ? kActiveCardColour : kInActiveCardColour,
+                  colour: selectedMeasure == Measurement.metric ? kActiveCardColour : kInActiveCardColour,
                   child: IconContent(
-                    cardIconData: FontAwesomeIcons.mars,
+                    cardIconData: FontAwesomeIcons.pencilRuler,
                     iconSize: 80.0,
-                    cardText: 'MALE',
+                    cardText: 'METRIC',
                   ),
                 ),
               ),
               Expanded(child: CustomCard(
                 onPress: (){
                   setState(() {
-                    selectedGender = Gender.female;
+                    selectedMeasure = Measurement.imperial;
                   });
                 },
-                colour: selectedGender == Gender.female ? kActiveCardColour : kInActiveCardColour,
+                colour: selectedMeasure == Measurement.imperial ? kActiveCardColour : kInActiveCardColour,
                 child: IconContent(
-                  cardIconData: FontAwesomeIcons.venus,
+                  cardIconData: FontAwesomeIcons.rulerCombined,
                   iconSize: 80.0,
-                  cardText: 'FEMALE',
+                  cardText: 'IMPERIAL',
                   ),
                 ),
               ),
@@ -87,11 +89,11 @@ class _InputPageState extends State<InputPage> {
                   textBaseline: TextBaseline.alphabetic,
                   children: <Widget>[
                     Text(
-                      height.toString(),
+                      selectedMeasure == Measurement.metric ? height.toString() : '${displayFt.toString()},${displayIn.toString()}',
                       style: kNumberTextStyle,
                     ),
                     Text(
-                      'cm',
+                      selectedMeasure == Measurement.metric ? 'cm' : 'ft,in',
                       style: kLabelTextStyle,
                     ),
                   ],
@@ -106,13 +108,21 @@ class _InputPageState extends State<InputPage> {
                     overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
                   ),
                   child: Slider(
-                    value: height.toDouble(),
-                    min: 120.0,
-                    max: 220.0,
+                    value: selectedMeasure == Measurement.metric ? height.toDouble() : heightIn.toDouble(),
+                    min: selectedMeasure == Measurement.metric ? 120.0 : 48.0,
+                    max: selectedMeasure == Measurement.metric ? 210.0 : 84,
                     onChanged: (double newValue) {
-                      setState(() {
-                        height = newValue.round();
-                      });
+                      if (selectedMeasure == Measurement.metric) {
+                        setState(() {
+                          height = newValue.round();
+                        });
+                      } else if (selectedMeasure == Measurement.imperial) {
+                        setState(() {
+                          heightIn = newValue.toInt();
+                          displayFt = heightIn ~/12;
+                          displayIn = (heightIn % 12).toInt();
+                        });
+                      }
                     },
                   ),
                 ),
@@ -138,11 +148,11 @@ class _InputPageState extends State<InputPage> {
                       children: <Widget>[
                         SizedBox(width: 18.0,),
                         Text(
-                          weight.toString(),
+                          selectedMeasure == Measurement.metric ? weight.toString() : weightLbs.toString(),
                           style: kNumberTextStyle,
                         ),
                         Text(
-                          'kg',
+                          selectedMeasure == Measurement.metric ? 'kg' : 'lbs',
                           style: kLabelTextStyle,
                         ),
                       ],
@@ -154,8 +164,14 @@ class _InputPageState extends State<InputPage> {
                           icon: FontAwesomeIcons.minus,
                           onPressed: (){
                             setState(() {
-                              if (weight > 40)
-                                weight--;
+                              if (selectedMeasure == Measurement.metric) {
+                                if (weight > 40)
+                                  weight--;
+                              } else if (selectedMeasure == Measurement.imperial) {
+                                if (weightLbs > 80)
+                                  weightLbs--;
+                              }
+
                             });
                           },
                         ),
@@ -166,8 +182,13 @@ class _InputPageState extends State<InputPage> {
                           icon: FontAwesomeIcons.plus,
                           onPressed: (){
                             setState(() {
-                              if (weight < 227)
-                                weight++;
+                              if (selectedMeasure == Measurement.metric) {
+                                if (weight < 200)
+                                  weight++;
+                              } else if (selectedMeasure == Measurement.imperial) {
+                                if (weightLbs < 350)
+                                  weightLbs++;
+                              }
                             });
                           },
                         ),
@@ -197,7 +218,7 @@ class _InputPageState extends State<InputPage> {
                           icon: FontAwesomeIcons.minus,
                           onPressed: (){
                             setState(() {
-                              if (age > 0)
+                              if (age > 17)
                                 age--;
                             });
                           },
@@ -225,7 +246,13 @@ class _InputPageState extends State<InputPage> {
           BottomButton(
             buttonTitle: 'CALCULATE',
             onTap: (){
-              Calculator calc = Calculator(height: height, weight: weight);
+              Calculator calc;
+              if (selectedMeasure == Measurement.metric) {
+                calc = Calculator(height: height, weight: weight, measure: selectedMeasure);
+              } else {
+
+                calc = Calculator(height: heightIn, weight: weightLbs, measure: selectedMeasure);
+              }
               
               Navigator.push(context,
               MaterialPageRoute(
