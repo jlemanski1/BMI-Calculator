@@ -27,7 +27,8 @@ class _InputPageState extends State<InputPage> {
   int weight = 60;
   int displayFt = 5;
   int displayIn = 8;
-  int heightIn; // actual height in inches
+  int weightLbs = 150;
+  int heightIn = 84; // actual height in inches
 
 
 
@@ -108,15 +109,14 @@ class _InputPageState extends State<InputPage> {
                   ),
                   child: Slider(
                     value: selectedMeasure == Measurement.metric ? height.toDouble() : heightIn.toDouble(),
-                    min: 120.0,
-                    max: 220.0,
+                    min: selectedMeasure == Measurement.metric ? 120.0 : 48.0,
+                    max: selectedMeasure == Measurement.metric ? 210.0 : 84,
                     onChanged: (double newValue) {
                       if (selectedMeasure == Measurement.metric) {
                         setState(() {
                           height = newValue.round();
                         });
                       } else if (selectedMeasure == Measurement.imperial) {
-                        // Check if newInches is within acceptable range (prevent runtime error)
                         setState(() {
                           heightIn = newValue.toInt();
                           displayFt = heightIn ~/12;
@@ -148,7 +148,7 @@ class _InputPageState extends State<InputPage> {
                       children: <Widget>[
                         SizedBox(width: 18.0,),
                         Text(
-                          weight.toString(),
+                          selectedMeasure == Measurement.metric ? weight.toString() : weightLbs.toString(),
                           style: kNumberTextStyle,
                         ),
                         Text(
@@ -164,8 +164,14 @@ class _InputPageState extends State<InputPage> {
                           icon: FontAwesomeIcons.minus,
                           onPressed: (){
                             setState(() {
-                              if (weight > 40)
-                                weight--;
+                              if (selectedMeasure == Measurement.metric) {
+                                if (weight > 40)
+                                  weight--;
+                              } else if (selectedMeasure == Measurement.imperial) {
+                                if (weightLbs > 80)
+                                  weightLbs--;
+                              }
+
                             });
                           },
                         ),
@@ -176,8 +182,13 @@ class _InputPageState extends State<InputPage> {
                           icon: FontAwesomeIcons.plus,
                           onPressed: (){
                             setState(() {
-                              if (weight < 300)
-                                weight++;
+                              if (selectedMeasure == Measurement.metric) {
+                                if (weight < 200)
+                                  weight++;
+                              } else if (selectedMeasure == Measurement.imperial) {
+                                if (weightLbs < 350)
+                                  weightLbs++;
+                              }
                             });
                           },
                         ),
@@ -235,7 +246,13 @@ class _InputPageState extends State<InputPage> {
           BottomButton(
             buttonTitle: 'CALCULATE',
             onTap: (){
-              Calculator calc = Calculator(height: height, weight: weight, measure: selectedMeasure);
+              Calculator calc;
+              if (selectedMeasure == Measurement.metric) {
+                calc = Calculator(height: height, weight: weight, measure: selectedMeasure);
+              } else {
+
+                calc = Calculator(height: heightIn, weight: weightLbs, measure: selectedMeasure);
+              }
               
               Navigator.push(context,
               MaterialPageRoute(

@@ -15,7 +15,7 @@ class Calculator {
   // Calculate BMI and return as string with 1 decimal point
   String calculateBMI() {
     if (measure == Measurement.imperial) {
-      _bmi = (weight / pow(height, 2)) * 703;   //Height in Inches
+      _bmi = (weight / pow(height, 2)) * 703;
     } else if (measure == Measurement.metric) {
       _bmi = weight / pow(height / 100, 2);     // Height /100 to be in M from cm
     }
