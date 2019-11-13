@@ -21,10 +21,12 @@ class InputPage extends StatefulWidget {
 
 
 class _InputPageState extends State<InputPage> {
-  Measurement selectedMeasure;
+  Measurement selectedMeasure = Measurement.metric;
   int age = 18;
+  // Metric Units
   int height = 180;
   int weight = 60;
+  // Imperial Display Units
   int displayFt = 5;
   int displayIn = 8;
   int weightLbs = 150;
