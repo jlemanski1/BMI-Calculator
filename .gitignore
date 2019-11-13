@@ -8,7 +8,10 @@
 **/.buildlog/
 **/.history
 **/.svn/
+
+# Keys & Key info
 **/*.jks
+**/android/key.properties
 
 # IntelliJ related
 **/*.iml
