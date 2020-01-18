@@ -166,10 +166,10 @@ class _InputPageState extends State<InputPage> {
                             setState(() {
                                 if (selectedMeasure == Measurement.metric) {
                                   if (weight > 40)
-                                    weight--;
+                                    weight-= 5;
                                 } else if (selectedMeasure == Measurement.imperial) {
                                   if (weightLbs > 80)
-                                    weightLbs--;
+                                    weightLbs-= 10;
                                 }
                               });
                           },
@@ -196,10 +196,10 @@ class _InputPageState extends State<InputPage> {
                             setState(() {
                               if (selectedMeasure == Measurement.metric) {
                                 if (weight < 200)
-                                  weight++;
+                                  weight+= 5;
                               } else if (selectedMeasure == Measurement.imperial) {
                                 if (weightLbs < 350)
-                                  weightLbs++;
+                                  weightLbs+= 10;
                               }
                             });
                           },
@@ -244,7 +244,7 @@ class _InputPageState extends State<InputPage> {
                           onHold: () {
                             setState(() {
                               if (age > 17)
-                                age--;
+                                age-= 5;
                             });
                           },
                           child: RoundIconButton(
@@ -264,7 +264,7 @@ class _InputPageState extends State<InputPage> {
                           onHold: () {
                             setState(() {
                               if (age < 90)
-                                age++;
+                                age+= 5;
                             });
                           },
                           child: RoundIconButton(
