@@ -9,7 +9,7 @@ import 'package:bmi_calculator/components/custom_card.dart';
 import 'package:bmi_calculator/components/icon_content.dart';
 import 'package:bmi_calculator/components/round_icon_button.dart';
 import 'package:bmi_calculator/components/bottom_button.dart';
-
+import 'package:holding_gesture/holding_gesture.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -159,27 +159,38 @@ class _InputPageState extends State<InputPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        RoundIconButton(
-                          icon: FontAwesomeIcons.minus,
-                          onPressed: (){
+                        HoldDetector(
+                          onHold: () {
                             setState(() {
-                              if (selectedMeasure == Measurement.metric) {
-                                if (weight > 40)
-                                  weight--;
-                              } else if (selectedMeasure == Measurement.imperial) {
-                                if (weightLbs > 80)
-                                  weightLbs--;
-                              }
-
-                            });
+                                if (selectedMeasure == Measurement.metric) {
+                                  if (weight > 40)
+                                    weight--;
+                                } else if (selectedMeasure == Measurement.imperial) {
+                                  if (weightLbs > 80)
+                                    weightLbs--;
+                                }
+                              });
                           },
+                          child: RoundIconButton(
+                            icon: FontAwesomeIcons.minus,
+                            onPressed: (){
+                              setState(() {
+                                if (selectedMeasure == Measurement.metric) {
+                                  if (weight > 40)
+                                    weight--;
+                                } else if (selectedMeasure == Measurement.imperial) {
+                                  if (weightLbs > 80)
+                                    weightLbs--;
+                                }
+                              });
+                            },
+                          ),
                         ),
                         SizedBox(
                           width: 10.0,
                         ),
-                        RoundIconButton(
-                          icon: FontAwesomeIcons.plus,
-                          onPressed: (){
+                        HoldDetector(
+                          onHold: () {
                             setState(() {
                               if (selectedMeasure == Measurement.metric) {
                                 if (weight < 200)
@@ -190,6 +201,20 @@ class _InputPageState extends State<InputPage> {
                               }
                             });
                           },
+                          child: RoundIconButton(
+                            icon: FontAwesomeIcons.plus,
+                            onPressed: (){
+                              setState(() {
+                                if (selectedMeasure == Measurement.metric) {
+                                  if (weight < 200)
+                                    weight++;
+                                } else if (selectedMeasure == Measurement.imperial) {
+                                  if (weightLbs < 350)
+                                    weightLbs++;
+                                }
+                              });
+                            },
+                          ),
                         ),
                       ],
                     )
@@ -213,27 +238,43 @@ class _InputPageState extends State<InputPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        RoundIconButton(
-                          icon: FontAwesomeIcons.minus,
-                          onPressed: (){
+                        HoldDetector(
+                          onHold: () {
                             setState(() {
                               if (age > 17)
                                 age--;
                             });
                           },
+                          child: RoundIconButton(
+                            icon: FontAwesomeIcons.minus,
+                            onPressed: (){
+                              setState(() {
+                                if (age > 17)
+                                  age--;
+                              });
+                            },
+                          ),
                         ),
                         SizedBox(
                           width: 10.0,
                         ),
-                        RoundIconButton(
-                          icon: FontAwesomeIcons.plus,
-                          onPressed: (){
+                        HoldDetector(
+                          onHold: () {
                             setState(() {
                               if (age < 90)
                                 age++;
                             });
                           },
-                        ),
+                          child: RoundIconButton(
+                            icon: FontAwesomeIcons.plus,
+                            onPressed: (){
+                              setState(() {
+                                if (age < 90)
+                                  age++;
+                              });
+                            },
+                          ),
+                        )
                       ],
                     )
                   ],
