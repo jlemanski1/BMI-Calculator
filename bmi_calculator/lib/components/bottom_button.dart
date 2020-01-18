@@ -5,8 +5,9 @@ class BottomButton extends StatelessWidget {
 
   final Function onTap;
   final String buttonTitle;
+  final Color colour;
 
-  BottomButton({@required this.onTap, @required this.buttonTitle});
+  BottomButton({@required this.onTap, @required this.buttonTitle, @required this.colour});
 
 
   @override
@@ -14,7 +15,7 @@ class BottomButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        color: kBottomContainerColour,
+        color: colour,
         margin: EdgeInsets.only(top: 10.0),
         padding: EdgeInsets.only(bottom: 20.0),
         width: double.infinity,

@@ -49,7 +49,8 @@ class _InputPageState extends State<InputPage> {
                       selectedMeasure = Measurement.metric;
                     });
                   },
-                  colour: selectedMeasure == Measurement.metric ? kActiveCardColour : kInActiveCardColour,
+                  colour: selectedMeasure == Measurement.metric ?
+                    Theme.of(context).primaryColor.withOpacity(1.0) : Theme.of(context).primaryColor.withOpacity(0.6),
                   child: IconContent(
                     cardIconData: FontAwesomeIcons.pencilRuler,
                     iconSize: 80.0,
@@ -63,7 +64,8 @@ class _InputPageState extends State<InputPage> {
                     selectedMeasure = Measurement.imperial;
                   });
                 },
-                colour: selectedMeasure == Measurement.imperial ? kActiveCardColour : kInActiveCardColour,
+                colour: selectedMeasure == Measurement.imperial ?
+                  Theme.of(context).primaryColor.withOpacity(1.0) : Theme.of(context).primaryColor.withOpacity(0.6),
                 child: IconContent(
                   cardIconData: FontAwesomeIcons.rulerCombined,
                   iconSize: 80.0,
@@ -74,7 +76,7 @@ class _InputPageState extends State<InputPage> {
             ],),
           ),
           Expanded(child: CustomCard(
-            colour: kActiveCardColour,
+            colour: Theme.of(context).primaryColor.withOpacity(1.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -102,7 +104,7 @@ class _InputPageState extends State<InputPage> {
                     activeTrackColor: Colors.white,
                     inactiveTrackColor: Color(0xFF8D8E98),
                     overlayColor: Color(0x29EB1555),
-                    thumbColor: Color(0xFFEB1555),
+                    thumbColor: Color(0xFFFA1536),//Color(0xFFEB1555),
                     thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
                     overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
                   ),
@@ -132,7 +134,7 @@ class _InputPageState extends State<InputPage> {
           Expanded(child: Row(
             children: <Widget>[
               Expanded(child: CustomCard(
-                colour: kActiveCardColour,
+                colour: Theme.of(context).primaryColor.withOpacity(1.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -223,7 +225,7 @@ class _InputPageState extends State<InputPage> {
                 ),
               ),
               Expanded(child: CustomCard(
-                colour: kActiveCardColour,
+                colour: Theme.of(context).primaryColor.withOpacity(1.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -285,6 +287,7 @@ class _InputPageState extends State<InputPage> {
           ),
           BottomButton(
             buttonTitle: 'CALCULATE',
+            colour: Color(0xFFD80422),
             onTap: (){
               Calculator calc;
               if (selectedMeasure == Measurement.metric) {

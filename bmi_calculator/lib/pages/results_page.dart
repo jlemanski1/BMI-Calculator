@@ -38,7 +38,7 @@ class ResultsPage extends StatelessWidget {
           Expanded(
             flex: 5,
             child: CustomCard(
-              colour: kActiveCardColour,
+              colour: Theme.of(context).primaryColor.withOpacity(1.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -66,6 +66,7 @@ class ResultsPage extends StatelessWidget {
           ),
           BottomButton(
             buttonTitle: 'RE-CALCULATE',
+            colour: Color(0xFFD80422),
             onTap: () {
               Navigator.pop(context);
             },
