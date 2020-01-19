@@ -36,7 +36,14 @@ class _InputPageState extends State<InputPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('ezBMI'),
+        title: Text(
+          'ezBMI',
+          style: TextStyle(
+            fontSize: 28.0,
+            fontWeight: FontWeight.bold,
+            color: Colors.orangeAccent
+          ),
+        ),
       ),
       body: Column(
         children: <Widget>[
@@ -50,7 +57,7 @@ class _InputPageState extends State<InputPage> {
                     });
                   },
                   colour: selectedMeasure == Measurement.metric ?
-                    Theme.of(context).primaryColor.withOpacity(1.0) : Theme.of(context).primaryColor.withOpacity(0.6),
+                    Theme.of(context).primaryColor : Theme.of(context).primaryColor.withOpacity(0.6),
                   child: IconContent(
                     cardIconData: FontAwesomeIcons.pencilRuler,
                     iconSize: 80.0,
@@ -65,7 +72,7 @@ class _InputPageState extends State<InputPage> {
                   });
                 },
                 colour: selectedMeasure == Measurement.imperial ?
-                  Theme.of(context).primaryColor.withOpacity(1.0) : Theme.of(context).primaryColor.withOpacity(0.6),
+                  Theme.of(context).primaryColor : Theme.of(context).primaryColor.withOpacity(0.6),
                 child: IconContent(
                   cardIconData: FontAwesomeIcons.rulerCombined,
                   iconSize: 80.0,
@@ -103,8 +110,8 @@ class _InputPageState extends State<InputPage> {
                   data: SliderTheme.of(context).copyWith(
                     activeTrackColor: Colors.white,
                     inactiveTrackColor: Color(0xFF8D8E98),
-                    overlayColor: Color(0x29EB1555),
-                    thumbColor: Color(0xFFFA1536),//Color(0xFFEB1555),
+                    overlayColor: Colors.orangeAccent,
+                    thumbColor: Colors.orange,
                     thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
                     overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
                   ),
@@ -134,7 +141,7 @@ class _InputPageState extends State<InputPage> {
           Expanded(child: Row(
             children: <Widget>[
               Expanded(child: CustomCard(
-                colour: Theme.of(context).primaryColor.withOpacity(1.0),
+                colour: Theme.of(context).primaryColor,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -287,7 +294,7 @@ class _InputPageState extends State<InputPage> {
           ),
           BottomButton(
             buttonTitle: 'CALCULATE',
-            colour: Color(0xFFD80422),
+            colour: Colors.orange.withOpacity(0.9),
             onTap: (){
               Calculator calc;
               if (selectedMeasure == Measurement.metric) {
@@ -296,7 +303,6 @@ class _InputPageState extends State<InputPage> {
 
                 calc = Calculator(height: heightIn, weight: weightLbs, measure: selectedMeasure);
               }
-              
               Navigator.push(context,
               MaterialPageRoute(
                 builder: (context) => ResultsPage(

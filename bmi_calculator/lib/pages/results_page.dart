@@ -18,7 +18,14 @@ class ResultsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('ezBMI'),
+        title: Text(
+          'ezBMI',
+          style: TextStyle(
+            fontSize: 28.0,
+            fontWeight: FontWeight.bold,
+            color: Colors.orangeAccent
+          ),
+        ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -66,7 +73,7 @@ class ResultsPage extends StatelessWidget {
           ),
           BottomButton(
             buttonTitle: 'RE-CALCULATE',
-            colour: Color(0xFFD80422),
+            colour: Colors.orange.withOpacity(0.9),
             onTap: () {
               Navigator.pop(context);
             },
