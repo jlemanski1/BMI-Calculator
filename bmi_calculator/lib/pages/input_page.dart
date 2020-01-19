@@ -41,7 +41,7 @@ class _InputPageState extends State<InputPage> {
           style: TextStyle(
             fontSize: 28.0,
             fontWeight: FontWeight.bold,
-            color: Colors.orangeAccent
+            color: Colors.lightGreen
           ),
         ),
       ),
@@ -110,8 +110,8 @@ class _InputPageState extends State<InputPage> {
                   data: SliderTheme.of(context).copyWith(
                     activeTrackColor: Colors.white,
                     inactiveTrackColor: Color(0xFF8D8E98),
-                    overlayColor: Colors.orangeAccent,
-                    thumbColor: Colors.orange,
+                    overlayColor: Colors.greenAccent,
+                    thumbColor: Colors.lightGreen,
                     thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
                     overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
                   ),
@@ -294,7 +294,7 @@ class _InputPageState extends State<InputPage> {
           ),
           BottomButton(
             buttonTitle: 'CALCULATE',
-            colour: Colors.orange.withOpacity(0.9),
+            colour: Colors.green[600],
             onTap: (){
               Calculator calc;
               if (selectedMeasure == Measurement.metric) {

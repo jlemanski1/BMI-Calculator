@@ -23,7 +23,7 @@ class ResultsPage extends StatelessWidget {
           style: TextStyle(
             fontSize: 28.0,
             fontWeight: FontWeight.bold,
-            color: Colors.orangeAccent
+            color: Colors.lightGreen
           ),
         ),
       ),
@@ -73,7 +73,7 @@ class ResultsPage extends StatelessWidget {
           ),
           BottomButton(
             buttonTitle: 'RE-CALCULATE',
-            colour: Colors.orange.withOpacity(0.9),
+            colour: Colors.green[600],
             onTap: () {
               Navigator.pop(context);
             },
