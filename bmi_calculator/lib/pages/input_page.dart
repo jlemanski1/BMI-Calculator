@@ -24,10 +24,10 @@ class _InputPageState extends State<InputPage> {
   int height = 180;
   int weight = 60;
   // Imperial Display Units
-  int displayFt = 5;
-  int displayIn = 8;
+  int displayFt = 6;
+  int displayIn = 7;
   int weightLbs = 150;
-  int heightIn = 84; // actual height in inches
+  int heightIn = 80; // actual height in inches
 
 
 
@@ -118,7 +118,7 @@ class _InputPageState extends State<InputPage> {
                   child: Slider(
                     value: selectedMeasure == Measurement.metric ? height.toDouble() : heightIn.toDouble(),
                     min: selectedMeasure == Measurement.metric ? 120.0 : 48.0,
-                    max: selectedMeasure == Measurement.metric ? 210.0 : 84,
+                    max: selectedMeasure == Measurement.metric ? 210.0 : 80.0,
                     onChanged: (double newValue) {
                       if (selectedMeasure == Measurement.metric) {
                         setState(() {
