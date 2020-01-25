@@ -74,6 +74,8 @@ sudo apt update && sudo apt install dart
 
 ### Installation
 
+Available now on the [Play Store](https://play.google.com/store/apps/details?id=tech.jlemanski.bmi_calculator), alternatively:
+
 1. Clone the repo
 ```sh
 git clone https://github.com/jlemanski1/BMI-Calculator.git
