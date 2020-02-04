@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:bmi_calculator/pages/bmr_input.dart';
 import 'pages/input_page.dart';
 
 void main() => runApp(BMICalculator());
@@ -20,9 +21,55 @@ class BMICalculator extends StatelessWidget {
         ),
       ),
       */
-      home: InputPage(),
+      home: PageNavigation()
     );
   }
 }
 
+
+class PageNavigation extends StatefulWidget {
+  PageNavigation({Key key}) : super(key: key);
+
+  @override
+  _PageNavigationState createState() => _PageNavigationState();
+}
+
+class _PageNavigationState extends State<PageNavigation> {
+  int _selectedIndex = 0;
+
+  static List<Widget> _widgetOptions = <Widget>[
+    InputPage(),    
+    BMRInputPage(),
+  ];
+
+  void _onItemTap(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex)
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_upward),
+            title: Text('BMI'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.arrow_downward),
+            title: Text('BMR'),
+          )
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.green[600],
+        onTap: _onItemTap,
+      ),
+    );
+  }
+}
 
