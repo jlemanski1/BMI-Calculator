@@ -8,7 +8,14 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:holding_gesture/holding_gesture.dart';
 
-
+enum ActivityLevel {
+  basalRate0,
+  lowIntensity1,
+  lightExercise2,
+  moderateExercise3,
+  active4,
+  extreme5,
+}
 
 class BMRInputPage extends StatefulWidget {
   @override
@@ -16,7 +23,8 @@ class BMRInputPage extends StatefulWidget {
 }
 
 class _BMRInputPageState extends State<BMRInputPage> {
-  Measurement selectedMeasure = Measurement.metric;
+  Measurement _selectedMeasure = Measurement.metric;
+  ActivityLevel _selectedActivity = ActivityLevel.basalRate0;
   int age = 18;
   
   int height = 180;
@@ -75,10 +83,10 @@ class _BMRInputPageState extends State<BMRInputPage> {
                 child: CustomCard(
                   onPress: (){
                     setState(() {
-                      selectedMeasure = Measurement.metric;
+                      _selectedMeasure = Measurement.metric;
                     });
                   },
-                  colour: selectedMeasure == Measurement.metric ?
+                  colour: _selectedMeasure == Measurement.metric ?
                     Theme.of(context).primaryColor : Theme.of(context).primaryColor.withOpacity(0.6),
                   child: IconContent(
                     cardIconData: FontAwesomeIcons.pencilRuler,
@@ -91,10 +99,10 @@ class _BMRInputPageState extends State<BMRInputPage> {
               child: CustomCard(
                 onPress: (){
                   setState(() {
-                    selectedMeasure = Measurement.imperial;
+                    _selectedMeasure = Measurement.imperial;
                   });
                 },
-                colour: selectedMeasure == Measurement.imperial ?
+                colour: _selectedMeasure == Measurement.imperial ?
                   Theme.of(context).primaryColor : Theme.of(context).primaryColor.withOpacity(0.6),
                 child: IconContent(
                   cardIconData: FontAwesomeIcons.rulerCombined,
@@ -121,11 +129,11 @@ class _BMRInputPageState extends State<BMRInputPage> {
                   textBaseline: TextBaseline.alphabetic,
                   children: <Widget>[
                     Text(
-                      selectedMeasure == Measurement.metric ? height.toString() : '${displayFt.toString()},${displayIn.toString()}',
+                      _selectedMeasure == Measurement.metric ? height.toString() : '${displayFt.toString()},${displayIn.toString()}',
                       style: kNumberTextStyle,
                     ),
                     Text(
-                      selectedMeasure == Measurement.metric ? 'cm' : 'ft,in',
+                      _selectedMeasure == Measurement.metric ? 'cm' : 'ft,in',
                       style: kLabelTextStyle,
                     ),
                   ],
@@ -140,15 +148,15 @@ class _BMRInputPageState extends State<BMRInputPage> {
                     overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
                   ),
                   child: Slider(
-                    value: selectedMeasure == Measurement.metric ? height.toDouble() : heightIn.toDouble(),
-                    min: selectedMeasure == Measurement.metric ? 120.0 : 48.0,
-                    max: selectedMeasure == Measurement.metric ? 210.0 : 80.0,
+                    value: _selectedMeasure == Measurement.metric ? height.toDouble() : heightIn.toDouble(),
+                    min: _selectedMeasure == Measurement.metric ? 120.0 : 48.0,
+                    max: _selectedMeasure == Measurement.metric ? 210.0 : 80.0,
                     onChanged: (double newValue) {
-                      if (selectedMeasure == Measurement.metric) {
+                      if (_selectedMeasure == Measurement.metric) {
                         setState(() {
                           height = newValue.round();
                         });
-                      } else if (selectedMeasure == Measurement.imperial) {
+                      } else if (_selectedMeasure == Measurement.imperial) {
                         setState(() {
                           heightIn = newValue.toInt();
                           displayFt = heightIn ~/12;
@@ -180,11 +188,11 @@ class _BMRInputPageState extends State<BMRInputPage> {
                       children: <Widget>[
                         SizedBox(width: 18.0,),
                         Text(
-                          selectedMeasure == Measurement.metric ? weight.toString() : weightLbs.toString(),
+                          _selectedMeasure == Measurement.metric ? weight.toString() : weightLbs.toString(),
                           style: kNumberTextStyle,
                         ),
                         Text(
-                          selectedMeasure == Measurement.metric ? 'kg' : 'lbs',
+                          _selectedMeasure == Measurement.metric ? 'kg' : 'lbs',
                           style: kLabelTextStyle,
                         ),
                       ],
@@ -195,10 +203,10 @@ class _BMRInputPageState extends State<BMRInputPage> {
                         HoldDetector(
                           onHold: () {
                             setState(() {
-                                if (selectedMeasure == Measurement.metric) {
+                                if (_selectedMeasure == Measurement.metric) {
                                   if (weight > 40)
                                     weight-= 5;
-                                } else if (selectedMeasure == Measurement.imperial) {
+                                } else if (_selectedMeasure == Measurement.imperial) {
                                   if (weightLbs > 80)
                                     weightLbs-= 10;
                                 }
@@ -208,10 +216,10 @@ class _BMRInputPageState extends State<BMRInputPage> {
                             icon: FontAwesomeIcons.minus,
                             onPressed: (){
                               setState(() {
-                                if (selectedMeasure == Measurement.metric) {
+                                if (_selectedMeasure == Measurement.metric) {
                                   if (weight > 40)
                                     weight--;
-                                } else if (selectedMeasure == Measurement.imperial) {
+                                } else if (_selectedMeasure == Measurement.imperial) {
                                   if (weightLbs > 80)
                                     weightLbs--;
                                 }
@@ -225,10 +233,10 @@ class _BMRInputPageState extends State<BMRInputPage> {
                         HoldDetector(
                           onHold: () {
                             setState(() {
-                              if (selectedMeasure == Measurement.metric) {
+                              if (_selectedMeasure == Measurement.metric) {
                                 if (weight < 200)
                                   weight+= 5;
-                              } else if (selectedMeasure == Measurement.imperial) {
+                              } else if (_selectedMeasure == Measurement.imperial) {
                                 if (weightLbs < 350)
                                   weightLbs+= 10;
                               }
@@ -238,10 +246,10 @@ class _BMRInputPageState extends State<BMRInputPage> {
                             icon: FontAwesomeIcons.plus,
                             onPressed: (){
                               setState(() {
-                                if (selectedMeasure == Measurement.metric) {
+                                if (_selectedMeasure == Measurement.metric) {
                                   if (weight < 200)
                                     weight++;
-                                } else if (selectedMeasure == Measurement.imperial) {
+                                } else if (_selectedMeasure == Measurement.imperial) {
                                   if (weightLbs < 350)
                                     weightLbs++;
                                 }
@@ -316,7 +324,18 @@ class _BMRInputPageState extends State<BMRInputPage> {
               ),
             ],),
           ),
-          
+          Expanded(
+            child: PopupMenuButton<ActivityLevel>(
+              onSelected: (ActivityLevel result) {
+                setState(() {
+                  _selectedActivity = result;
+                });
+              },
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<ActivityLevel>>[
+
+              ],
+            ),
+          ),
           BottomButton(
             buttonTitle: 'CALCULATE',
             colour: Colors.green[600],
