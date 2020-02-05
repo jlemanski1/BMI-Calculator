@@ -90,7 +90,7 @@ class _BMRInputPageState extends State<BMRInputPage> {
                     Theme.of(context).primaryColor : Theme.of(context).primaryColor.withOpacity(0.6),
                   child: IconContent(
                     cardIconData: FontAwesomeIcons.pencilRuler,
-                    iconSize: 80.0,
+                    iconSize: 60.0,
                     cardText: 'METRIC',
                   ),
                 ),
@@ -106,7 +106,7 @@ class _BMRInputPageState extends State<BMRInputPage> {
                   Theme.of(context).primaryColor : Theme.of(context).primaryColor.withOpacity(0.6),
                 child: IconContent(
                   cardIconData: FontAwesomeIcons.rulerCombined,
-                  iconSize: 80.0,
+                  iconSize: 60.0,
                   cardText: 'IMPERIAL',
                   ),
                 ),
@@ -263,76 +263,89 @@ class _BMRInputPageState extends State<BMRInputPage> {
                 ),
                 ),
               ),
-              Expanded(child: CustomCard(
-                colour: Theme.of(context).primaryColor.withOpacity(1.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      'AGE',
-                      style: kLabelTextStyle,
-                    ),
-                    Text(
-                      age.toString(),
-                      style: kNumberTextStyle,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        HoldDetector(
-                          onHold: () {
-                            setState(() {
-                              if (age > 17)
-                                age-= 5;
-                            });
-                          },
-                          child: RoundIconButton(
-                            icon: FontAwesomeIcons.minus,
-                            onPressed: (){
+              Expanded(
+                child: CustomCard(
+                  colour: Theme.of(context).primaryColor.withOpacity(1.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'AGE',
+                        style: kLabelTextStyle,
+                      ),
+                      Text(
+                        age.toString(),
+                        style: TextStyle(
+                          fontSize: 50.0, fontWeight: FontWeight.w900
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          HoldDetector(
+                            onHold: () {
                               setState(() {
                                 if (age > 17)
-                                  age--;
+                                  age-= 5;
                               });
                             },
+                            child: RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              onPressed: (){
+                                setState(() {
+                                  if (age > 17)
+                                    age--;
+                                });
+                              },
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 10.0,
-                        ),
-                        HoldDetector(
-                          onHold: () {
-                            setState(() {
-                              if (age < 90)
-                                age+= 5;
-                            });
-                          },
-                          child: RoundIconButton(
-                            icon: FontAwesomeIcons.plus,
-                            onPressed: (){
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          HoldDetector(
+                            onHold: () {
                               setState(() {
                                 if (age < 90)
-                                  age++;
+                                  age+= 5;
                               });
                             },
-                          ),
-                        )
-                      ],
-                    )
-                  ],
-                ),
+                            child: RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onPressed: (){
+                                setState(() {
+                                  if (age < 90)
+                                    age++;
+                                });
+                              },
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],),
           ),
           Expanded(
-            child: PopupMenuButton<ActivityLevel>(
-              onSelected: (ActivityLevel result) {
-                setState(() {
-                  _selectedActivity = result;
-                });
-              },
-              itemBuilder: (BuildContext context) => <PopupMenuEntry<ActivityLevel>>[
-
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: Text('Activity Level'),
+                ),
+                PopupMenuButton<ActivityLevel>(
+                  onSelected: (ActivityLevel result) {
+                    setState(() {
+                      _selectedActivity = result;
+                    });
+                  },
+                  itemBuilder: (BuildContext context) => <PopupMenuEntry<ActivityLevel>>[
+                    const PopupMenuItem<ActivityLevel>(
+                      value: ActivityLevel.basalRate0,
+                      child: Text('Basal Metabolic Rate'),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
