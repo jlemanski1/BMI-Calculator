@@ -93,10 +93,13 @@ class _BMRInputPageState extends State<BMRInputPage> {
                   },
                   colour: _selectedMeasure == Measurement.metric ?
                     Theme.of(context).primaryColor : Theme.of(context).primaryColor.withOpacity(0.6),
-                  child: IconContent(
-                    cardIconData: FontAwesomeIcons.weightHanging,
-                    iconSize: 40.0,
-                    cardText: _selectedMeasure == Measurement.metric ? 'METRIC' : 'IMPERIAL',
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                    child: IconContent(
+                      cardIconData: FontAwesomeIcons.weightHanging,
+                      iconSize: 40.0,
+                      cardText: _selectedMeasure == Measurement.metric ? 'METRIC' : 'IMPERIAL',
+                    ),
                   ),
                 ),
               ),
@@ -112,25 +115,30 @@ class _BMRInputPageState extends State<BMRInputPage> {
                 },
                 colour: _isMale ?
                   Theme.of(context).primaryColor : Theme.of(context).primaryColor.withOpacity(0.6),
-                child: IconContent(
-                  cardIconData: _isMale ? FontAwesomeIcons.male : FontAwesomeIcons.female,
-                  iconSize: 40.0,
-                  cardText: _isMale ? 'MALE' : 'FEMALE',
-                  ),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                  child: IconContent(
+                    cardIconData: _isMale ? FontAwesomeIcons.male : FontAwesomeIcons.female,
+                    iconSize: 40.0,
+                    cardText: _isMale ? 'MALE' : 'FEMALE',
+                    ),
+                ),
                 ),
               ),
             ],
           ),
         ),
-        Expanded(child: CustomCard(
+        CustomCard(
             colour: Theme.of(context).primaryColor.withOpacity(1.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                Padding(padding: EdgeInsets.only(top: 6.0)),
                 Text(
                   'HEIGHT',
                   style: kLabelTextStyle
                 ),
+                Padding(padding: EdgeInsets.only(top: 2.0)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.baseline,
@@ -177,7 +185,7 @@ class _BMRInputPageState extends State<BMRInputPage> {
               ],
               ),
             ),
-          ),
+          
           Expanded(child: Row(
             children: <Widget>[
               Expanded(child: CustomCard(
@@ -285,9 +293,7 @@ class _BMRInputPageState extends State<BMRInputPage> {
                       ),
                       Text(
                         age.toString(),
-                        style: TextStyle(
-                          fontSize: 40.0, fontWeight: FontWeight.w900
-                        ),
+                        style: kNumberTextStyle
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -340,7 +346,10 @@ class _BMRInputPageState extends State<BMRInputPage> {
           Row(
             children: <Widget>[
               Expanded(
-                child: Text('Activity Level'),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 28.0),
+                  child: Text('Activity Level'),
+                ),
               ),
               PopupMenuButton<ActivityLevel>(
                 onSelected: (ActivityLevel result) {
@@ -352,6 +361,26 @@ class _BMRInputPageState extends State<BMRInputPage> {
                   const PopupMenuItem<ActivityLevel>(
                     value: ActivityLevel.basalRate0,
                     child: Text('Basal Metabolic Rate'),
+                  ),
+                  const PopupMenuItem<ActivityLevel>(
+                    value: ActivityLevel.lowIntensity1,
+                    child: Text('Low Intensity'),
+                  ),
+                  const PopupMenuItem<ActivityLevel>(
+                    value: ActivityLevel.lightExercise2,
+                    child: Text('Light Exercise'),
+                  ),
+                  const PopupMenuItem<ActivityLevel>(
+                    value: ActivityLevel.moderateExercise3,
+                    child: Text('Moderate Exercise'),
+                  ),
+                  const PopupMenuItem<ActivityLevel>(
+                    value: ActivityLevel.active4,
+                    child: Text('Active'),
+                  ),
+                  const PopupMenuItem<ActivityLevel>(
+                    value: ActivityLevel.extreme5,
+                    child: Text('Extreme'),
                   ),
                 ],
               ),
