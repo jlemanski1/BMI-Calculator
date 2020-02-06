@@ -348,9 +348,15 @@ class _BMRInputPageState extends State<BMRInputPage> {
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 28.0),
-                  child: Text('Activity Level'),
+                  child: Text(
+                    'Activity Level',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w900,
+                    )
+                  ),
                 ),
               ),
+              // TODO: Change to DropDownMenu instead
               PopupMenuButton<ActivityLevel>(
                 onSelected: (ActivityLevel result) {
                   setState(() {
@@ -384,6 +390,7 @@ class _BMRInputPageState extends State<BMRInputPage> {
                   ),
                 ],
               ),
+              
             ],
           ),
           
