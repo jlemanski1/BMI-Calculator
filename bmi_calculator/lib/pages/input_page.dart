@@ -47,7 +47,7 @@ class _InputPageState extends State<InputPage> {
       ),
       body: Column(
         children: <Widget>[
-          Expanded(child: Row(
+          SafeArea(child: Row(
             children: <Widget>[
               Expanded(
                 child: CustomCard(
