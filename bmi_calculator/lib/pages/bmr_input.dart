@@ -79,7 +79,7 @@ class _BMRInputPageState extends State<BMRInputPage> {
       ),
       body: Column(
         children: <Widget>[
-          Expanded(child: Row(
+          SafeArea(child: Row(
             children: <Widget>[
               Expanded(
                 child: CustomCard(
@@ -95,7 +95,7 @@ class _BMRInputPageState extends State<BMRInputPage> {
                     Theme.of(context).primaryColor : Theme.of(context).primaryColor.withOpacity(0.6),
                   child: IconContent(
                     cardIconData: FontAwesomeIcons.weightHanging,
-                    iconSize: 60.0,
+                    iconSize: 40.0,
                     cardText: _selectedMeasure == Measurement.metric ? 'METRIC' : 'IMPERIAL',
                   ),
                 ),
@@ -114,7 +114,7 @@ class _BMRInputPageState extends State<BMRInputPage> {
                   Theme.of(context).primaryColor : Theme.of(context).primaryColor.withOpacity(0.6),
                 child: IconContent(
                   cardIconData: _isMale ? FontAwesomeIcons.male : FontAwesomeIcons.female,
-                  iconSize: 60.0,
+                  iconSize: 40.0,
                   cardText: _isMale ? 'MALE' : 'FEMALE',
                   ),
                 ),
@@ -187,7 +187,9 @@ class _BMRInputPageState extends State<BMRInputPage> {
                   children: <Widget>[
                     Text(
                       'WEIGHT',
-                      style: kLabelTextStyle,
+                      style: TextStyle(
+                        fontSize: 18.0, color: Color(0xFF8D8E98)
+                      ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -284,7 +286,7 @@ class _BMRInputPageState extends State<BMRInputPage> {
                       Text(
                         age.toString(),
                         style: TextStyle(
-                          fontSize: 50.0, fontWeight: FontWeight.w900
+                          fontSize: 40.0, fontWeight: FontWeight.w900
                         ),
                       ),
                       Row(
@@ -335,28 +337,27 @@ class _BMRInputPageState extends State<BMRInputPage> {
               ),
             ],),
           ),
-          Expanded(
-            child: Row(
-              children: <Widget>[
-                Expanded(
-                  child: Text('Activity Level'),
-                ),
-                PopupMenuButton<ActivityLevel>(
-                  onSelected: (ActivityLevel result) {
-                    setState(() {
-                      _selectedActivity = result;
-                    });
-                  },
-                  itemBuilder: (BuildContext context) => <PopupMenuEntry<ActivityLevel>>[
-                    const PopupMenuItem<ActivityLevel>(
-                      value: ActivityLevel.basalRate0,
-                      child: Text('Basal Metabolic Rate'),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: Text('Activity Level'),
+              ),
+              PopupMenuButton<ActivityLevel>(
+                onSelected: (ActivityLevel result) {
+                  setState(() {
+                    _selectedActivity = result;
+                  });
+                },
+                itemBuilder: (BuildContext context) => <PopupMenuEntry<ActivityLevel>>[
+                  const PopupMenuItem<ActivityLevel>(
+                    value: ActivityLevel.basalRate0,
+                    child: Text('Basal Metabolic Rate'),
+                  ),
+                ],
+              ),
+            ],
           ),
+          
           BottomButton(
             buttonTitle: 'CALCULATE',
             colour: Colors.green[600],
