@@ -17,6 +17,7 @@ enum ActivityLevel {
   extreme5,
 }
 
+
 class BMRInputPage extends StatefulWidget {
   @override
   _BMRInputPageState createState() => _BMRInputPageState();
@@ -25,6 +26,7 @@ class BMRInputPage extends StatefulWidget {
 class _BMRInputPageState extends State<BMRInputPage> {
   Measurement _selectedMeasure = Measurement.metric;
   ActivityLevel _selectedActivity = ActivityLevel.basalRate0;
+  bool _isMale = true;
   int age = 18;
   
   int height = 180;
@@ -83,15 +85,18 @@ class _BMRInputPageState extends State<BMRInputPage> {
                 child: CustomCard(
                   onPress: (){
                     setState(() {
-                      _selectedMeasure = Measurement.metric;
+                      if (_selectedMeasure == Measurement.imperial)
+                        _selectedMeasure = Measurement.metric;
+                      else
+                        _selectedMeasure = Measurement.imperial;
                     });
                   },
                   colour: _selectedMeasure == Measurement.metric ?
                     Theme.of(context).primaryColor : Theme.of(context).primaryColor.withOpacity(0.6),
                   child: IconContent(
-                    cardIconData: FontAwesomeIcons.pencilRuler,
+                    cardIconData: FontAwesomeIcons.weightHanging,
                     iconSize: 60.0,
-                    cardText: 'METRIC',
+                    cardText: _selectedMeasure == Measurement.metric ? 'METRIC' : 'IMPERIAL',
                   ),
                 ),
               ),
@@ -99,15 +104,18 @@ class _BMRInputPageState extends State<BMRInputPage> {
               child: CustomCard(
                 onPress: (){
                   setState(() {
-                    _selectedMeasure = Measurement.imperial;
+                    if (_isMale)
+                      _isMale = false;
+                    else
+                      _isMale = true;
                   });
                 },
-                colour: _selectedMeasure == Measurement.imperial ?
+                colour: _isMale ?
                   Theme.of(context).primaryColor : Theme.of(context).primaryColor.withOpacity(0.6),
                 child: IconContent(
-                  cardIconData: FontAwesomeIcons.rulerCombined,
+                  cardIconData: _isMale ? FontAwesomeIcons.male : FontAwesomeIcons.female,
                   iconSize: 60.0,
-                  cardText: 'IMPERIAL',
+                  cardText: _isMale ? 'MALE' : 'FEMALE',
                   ),
                 ),
               ),
