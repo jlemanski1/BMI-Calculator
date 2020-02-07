@@ -356,7 +356,48 @@ class _BMRInputPageState extends State<BMRInputPage> {
                   ),
                 ),
               ),
-              // TODO: Change to DropDownMenu instead
+              DropdownButton<ActivityLevel>(
+                value: _selectedActivity,
+                icon: Icon(Icons.arrow_drop_down),
+                iconSize: 24,
+                underline: Container(
+                  height: 2,
+                  color: Colors.greenAccent
+                ),
+                onChanged: (ActivityLevel value) {
+                  setState(() {
+                    _selectedActivity = value;
+                  });
+                },
+                items: [
+                  DropdownMenuItem(
+                    value: ActivityLevel.basalRate0,
+                    child: Text('Basal Metabolic Rate')
+                  ),
+                  DropdownMenuItem(
+                    value: ActivityLevel.lowIntensity1,
+                    child: Text('Low Intensity 1 day/wk')
+                  ),
+                  DropdownMenuItem(
+                    value: ActivityLevel.lightExercise2,
+                    child: Text('Light Exercise 2 day/wk')
+                  ),
+                  DropdownMenuItem(
+                    value: ActivityLevel.moderateExercise3,
+                    child: Text('Moderate Exercise 3 day/wk')
+                  ),
+                  DropdownMenuItem(
+                    value: ActivityLevel.active4,
+                    child: Text('Active Job & Exercise 3-5d/wk')
+                  ),
+                  DropdownMenuItem(
+                    value: ActivityLevel.extreme5,
+                    child: Text('Active Job & Exercise 55-6d/wk')
+                  ),
+                ],
+              ),
+              Padding(padding: EdgeInsets.only(right: 10.0)),
+              /*
               PopupMenuButton<ActivityLevel>(
                 onSelected: (ActivityLevel result) {
                   setState(() {
@@ -390,7 +431,7 @@ class _BMRInputPageState extends State<BMRInputPage> {
                   ),
                 ],
               ),
-              
+              */
             ],
           ),
           
