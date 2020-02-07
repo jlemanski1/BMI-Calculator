@@ -1,7 +1,7 @@
 name: bmi_calculator
 description: Simple BMI calculator designed to give you the info you need quickly so you can get back to your active lifestye.
 
-version: 1.0.9+3
+version: 1.0.10+3
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
