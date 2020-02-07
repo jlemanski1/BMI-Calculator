@@ -37,31 +37,6 @@ class _BMRInputPageState extends State<BMRInputPage> {
   int weightLbs = 150;
   int heightIn = 80;
 
-  // Formula requirements
-  //  weight and height
-  //  age in years
-  //  Activity level modifier
-
-  /*
-      BMR FORMULA
-      W = weight in kilograms (weight (lbs)/2.2) =weight in kg
-      H = height in centimeters (inches x 2.54) =height in cm
-      A = age in years
-
-      Men: BMR=66.47+ (13.75 x W) + (5.0 x H) - (6.75 x A)
-      Women: BMR=665.09 + (9.56 x W) + (1.84 x H) - (4.67 x A)
-      
-      MODIFIERS:
-      BMR x 1.2 for low intensity activities and leisure activities (primarily sedentary)
-      BMR x 1.375 for light exercise (leisurely walking for 30-50 minutes 3-4 days/week, golfing, house chores)
-      BMR x 1.55 for moderate exercise 3-5 days per week (60-70% MHR for 30-60 minutes/session)
-      BMR x 1.725 for active individuals (exercising 6-7 days/week at moderate to high intensity (70-85% MHR) 
-        for 45-60 minutes/session)
-      BMR x 1.9 for the extremely active individuals (engaged in heavy/intense exercise like heavy manual 
-        labor, heavy lifting, endurance athletes, and competitive team sports athletes 6-7 days/week for 
-        90 + minutes/session)
-  */
-
 
   @override
   Widget build(BuildContext context) {
@@ -352,48 +327,55 @@ class _BMRInputPageState extends State<BMRInputPage> {
                     'Activity Level',
                     style: TextStyle(
                       fontWeight: FontWeight.w900,
-                    )
+                      fontSize: 18.0
+                    ),
+                    textAlign: TextAlign.justify,
                   ),
                 ),
               ),
-              // TODO: Change to DropDownMenu instead
-              PopupMenuButton<ActivityLevel>(
-                onSelected: (ActivityLevel result) {
+              DropdownButton<ActivityLevel>(
+                value: _selectedActivity,
+                icon: Icon(Icons.arrow_drop_down),
+                iconSize: 24,
+                underline: Container(
+                  height: 2,
+                  color: Colors.lightGreenAccent
+                ),
+                onChanged: (ActivityLevel value) {
                   setState(() {
-                    _selectedActivity = result;
+                    _selectedActivity = value;
                   });
                 },
-                itemBuilder: (BuildContext context) => <PopupMenuEntry<ActivityLevel>>[
-                  const PopupMenuItem<ActivityLevel>(
+                items: [
+                  DropdownMenuItem(
                     value: ActivityLevel.basalRate0,
                     child: Text('Basal Metabolic Rate'),
                   ),
-                  const PopupMenuItem<ActivityLevel>(
+                  DropdownMenuItem(
                     value: ActivityLevel.lowIntensity1,
-                    child: Text('Low Intensity'),
+                    child: Text('Low Intensity 1 day/wk')
                   ),
-                  const PopupMenuItem<ActivityLevel>(
+                  DropdownMenuItem(
                     value: ActivityLevel.lightExercise2,
-                    child: Text('Light Exercise'),
+                    child: Text('Light Exercise 2 day/wk')
                   ),
-                  const PopupMenuItem<ActivityLevel>(
+                  DropdownMenuItem(
                     value: ActivityLevel.moderateExercise3,
-                    child: Text('Moderate Exercise'),
+                    child: Text('Moderate Exercise 3 day/wk')
                   ),
-                  const PopupMenuItem<ActivityLevel>(
+                  DropdownMenuItem(
                     value: ActivityLevel.active4,
-                    child: Text('Active'),
+                    child: Text('Active Job & Exercise 3-5d/wk')
                   ),
-                  const PopupMenuItem<ActivityLevel>(
+                  DropdownMenuItem(
                     value: ActivityLevel.extreme5,
-                    child: Text('Extreme'),
+                    child: Text('Active Job & Exercise 55-6d/wk')
                   ),
                 ],
               ),
-              
+              Padding(padding: EdgeInsets.only(right: 10.0)),
             ],
           ),
-          
           BottomButton(
             buttonTitle: 'CALCULATE',
             colour: Colors.green[600],
