@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/pages/bmr_input.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:math';
 import 'measure.dart';
@@ -28,6 +29,65 @@ import 'measure.dart';
   */
 
 class BMRCalculator {
+  final int weight;
+  final int height;
+  final int age;
+  final bool isMale;
+  final Measurement measure;
+  final ActivityLevel level;
+
+  double _bmr;
+  String bmrInterpretation;
+
+  BMRCalculator({
+    @required this.weight,
+    @required this.height,
+    @required this.age,
+    @required this.isMale,
+    @required this.measure,
+    @required this.level
+  });
+
+  // Calculates and returns the bmr
+  double getBMR(){
+    if (measure == Measurement.metric) {
+      if (isMale) {
+        _bmr = 66.47 + (13.75 * weight) + (5 * height) - (6.75 * age);
+      } else if (!isMale) {
+        _bmr = 665.09 + (9.56 * weight) + (1.84 * height) - (4.67 * age);
+      }
+    } else if (measure == Measurement.imperial) {
+
+    }
+    return _bmr;
+  }
 
 
+  // Calculates the user's adjusted BMR and returns as a formatted string
+  // Also sets the bmrInterpretation text with appropriate info about 
+  // calorie adjustments for gaining/losing weight.
+  String getResult() {
+    switch (level) {
+      case ActivityLevel.basalRate0:
+        
+        break;
+      case ActivityLevel.lowIntensity1:
+        
+        break;
+      case ActivityLevel.lightExercise2:
+        
+        break;
+      case ActivityLevel.moderateExercise3:
+        
+        break;
+      case ActivityLevel.active4:
+        
+        break;
+      case ActivityLevel.extreme5:
+        
+        break;
+    }
+
+    return _bmr.toStringAsFixed(2);
+  }
 }
