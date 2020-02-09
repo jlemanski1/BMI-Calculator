@@ -37,7 +37,7 @@ class BMRCalculator {
   final ActivityLevel level;
 
   double _bmr;
-  String bmrInterpretation;
+  String _bmrInterpretation;
 
   BMRCalculator({
     @required this.weight,
@@ -63,31 +63,35 @@ class BMRCalculator {
   }
 
 
-  // Calculates the user's adjusted BMR and returns as a formatted string
-  // Also sets the bmrInterpretation text with appropriate info about 
-  // calorie adjustments for gaining/losing weight.
-  String getResult() {
+  // Calculates the user's adjusted BMR and returns a list with both the
+  // adjusted bmr and the result interpretation.
+  List<String> getResult() {
     switch (level) {
       case ActivityLevel.basalRate0:
-        
+        _bmrInterpretation = '';
         break;
       case ActivityLevel.lowIntensity1:
-        
+        _bmr *= 1.2;
+        _bmrInterpretation = '';
         break;
       case ActivityLevel.lightExercise2:
-        
+        _bmr *= 1.375;
+        _bmrInterpretation = '';
         break;
       case ActivityLevel.moderateExercise3:
-        
+        _bmr *= 1.55;
+        _bmrInterpretation = '';
         break;
       case ActivityLevel.active4:
-        
+        _bmr *= 1.725;
+        _bmrInterpretation = '';
         break;
       case ActivityLevel.extreme5:
-        
+        _bmr *= 1.9;
+        _bmrInterpretation = '';
         break;
     }
 
-    return _bmr.toStringAsFixed(2);
+    return [_bmr.toStringAsFixed(2), _bmrInterpretation];
   }
 }
