@@ -57,7 +57,11 @@ class BMRCalculator {
         _bmr = 665.09 + (9.56 * weight) + (1.84 * height) - (4.67 * age);
       }
     } else if (measure == Measurement.imperial) {
-
+      if (isMale) {
+        _bmr = 66.47 + (13.75 * (weight / 2.2)) + (5 * (height * 2.54)) - (6.75 * age);
+      } else if (!isMale) {
+        _bmr = 665.09 + (9.56 * (weight / 2.2)) + (1.84 * (height *2.54)) - (4.67 * age);
+      }
     }
     return _bmr;
   }
@@ -66,6 +70,7 @@ class BMRCalculator {
   // Calculates the user's adjusted BMR and returns a list with both the
   // adjusted bmr and the result interpretation.
   List<String> getResult() {
+    getBMR();
     switch (level) {
       case ActivityLevel.basalRate0:
         _bmrInterpretation = '';
