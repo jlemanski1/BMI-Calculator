@@ -69,7 +69,7 @@ class BMRCalculator {
 
   // Calculates the user's adjusted BMR and returns a list with both the
   // adjusted bmr and the result interpretation.
-  List<String> getResult() {
+  List<dynamic> getResult() {
     getBMR();
     switch (level) {
       case ActivityLevel.basalRate0:
@@ -97,6 +97,6 @@ class BMRCalculator {
         break;
     }
 
-    return [_bmr.toStringAsFixed(2), _bmrInterpretation];
+    return [_bmr, _bmrInterpretation];
   }
 }

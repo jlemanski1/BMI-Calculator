@@ -6,10 +6,12 @@ import 'package:bmi_calculator/components/bottom_button.dart';
 
 class BMRResultsPage extends StatelessWidget {
 
-  final String bmrResult;
+  final double bmrResult;
   final String interpretation;
 
   BMRResultsPage({@required this.bmrResult, @required this.interpretation});
+
+  // TODO: Add Text bits to show cal count to maintai, gain, or lose weight
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +51,7 @@ class BMRResultsPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    '',
+                    'top',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 22.0,
@@ -57,11 +59,14 @@ class BMRResultsPage extends StatelessWidget {
                     )
                   ),
                   Text(
-                    '',
-                    style: kBMITextStyle
+                    'Lose: ${(bmrResult-300)?.toString()}\nMaintain: ${bmrResult?.toString()}\nGain: ${(bmrResult+300)?.toString()}',
+                    style: TextStyle(
+                      fontSize: 40.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   Text(
-                    '',
+                    'bottom',
                     style: kBodyTextStyle,
                     textAlign: TextAlign.center,
                   ),
