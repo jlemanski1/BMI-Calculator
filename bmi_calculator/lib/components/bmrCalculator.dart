@@ -48,6 +48,8 @@ class BMRCalculator {
     @required this.level
   });
 
+
+  //TODO double check that the formula is correct (Especially imperial)
   // Calculates and returns the bmr
   double getBMR(){
     if (measure == Measurement.metric) {
