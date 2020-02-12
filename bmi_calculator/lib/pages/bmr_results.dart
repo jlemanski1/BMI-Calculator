@@ -6,7 +6,7 @@ import 'package:bmi_calculator/components/bottom_button.dart';
 
 class BMRResultsPage extends StatelessWidget {
 
-  final double bmrResult;
+  final int bmrResult;
   final String interpretation;
 
   BMRResultsPage({@required this.bmrResult, @required this.interpretation});
@@ -51,7 +51,7 @@ class BMRResultsPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    'top',
+                    'Lose (1 lb/wk): ${(bmrResult-350)?.toString()}\nLose (1-2 lb/wk): ${(bmrResult-500)?.toString()}',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 22.0,
@@ -59,14 +59,22 @@ class BMRResultsPage extends StatelessWidget {
                     )
                   ),
                   Text(
-                    'Lose: ${(bmrResult-300)?.toString()}\nMaintain: ${bmrResult?.toString()}\nGain: ${(bmrResult+300)?.toString()}',
+                    'Maintain: ${bmrResult?.toString()}',
                     style: TextStyle(
                       fontSize: 40.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
-                    'bottom',
+                    'Gain (1 lb/wk): ${(bmrResult+350)?.toString()}\nGain (1-2 lb/wk): ${(bmrResult+500)?.toString()}',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 22.0,
+                      fontWeight: FontWeight.bold,
+                    )
+                  ),
+                  Text(
+                    interpretation,
                     style: kBodyTextStyle,
                     textAlign: TextAlign.center,
                   ),

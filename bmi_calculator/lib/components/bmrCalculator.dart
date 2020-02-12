@@ -92,11 +92,11 @@ class BMRCalculator {
         _bmrInterpretation = '';
         break;
       case ActivityLevel.extreme5:
-        _bmr *= 1.9;
+        _bmr *= 1.8;
         _bmrInterpretation = '';
         break;
     }
 
-    return [_bmr, _bmrInterpretation];
+    return [_bmr.round(), _bmrInterpretation];
   }
 }
