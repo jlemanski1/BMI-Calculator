@@ -53,22 +53,24 @@ class BMRResultsPage extends StatelessWidget {
                   Text(
                     'Lose (1 lb/wk): ${(bmrResult-350)?.toString()}\nLose (1-2 lb/wk): ${(bmrResult-500)?.toString()}',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.lightGreenAccent,
                       fontSize: 22.0,
                       fontWeight: FontWeight.bold,
                     )
                   ),
                   Text(
-                    'Maintain: ${bmrResult?.toString()}',
+                    'Consume ${bmrResult?.toString()} calories to maintain your current weight',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 40.0,
+                      color: Colors.white,
+                      fontSize: 30.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
                     'Gain (1 lb/wk): ${(bmrResult+350)?.toString()}\nGain (1-2 lb/wk): ${(bmrResult+500)?.toString()}',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.lightGreenAccent,
                       fontSize: 22.0,
                       fontWeight: FontWeight.bold,
                     )
