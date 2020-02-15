@@ -1,9 +1,11 @@
+import 'package:bmi_calculator/components/bmrCalculator.dart';
 import 'package:bmi_calculator/components/bottom_button.dart';
 import 'package:bmi_calculator/components/constants.dart';
 import 'package:bmi_calculator/components/icon_content.dart';
 import 'package:bmi_calculator/components/custom_card.dart';
 import 'package:bmi_calculator/components/measure.dart';
 import 'package:bmi_calculator/components/round_icon_button.dart';
+import 'package:bmi_calculator/pages/bmr_results.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:holding_gesture/holding_gesture.dart';
@@ -380,7 +382,25 @@ class _BMRInputPageState extends State<BMRInputPage> {
             buttonTitle: 'CALCULATE',
             colour: Colors.green[600],
             onTap: () {
+              // Calculate BMR
+              BMRCalculator calc;
+              calc = BMRCalculator(
+                weight: _selectedMeasure == Measurement.metric ? weight : weightLbs,
+                height: _selectedMeasure == Measurement.metric ? height : heightIn,
+                age: age,
+                isMale: _isMale,
+                measure: _selectedMeasure,
+                level: _selectedActivity
+              );
 
+              // Navigate to BMRResultsPage
+              Navigator.push(context, 
+              MaterialPageRoute(
+                builder: (context) => BMRResultsPage(
+                  bmrResult: calc.getResult()[0], 
+                  interpretation: calc.getResult()[1])
+              ));
+              print('${calc.getResult()[0]},${calc.getResult()[1]}');
             },
           ),
         ],
